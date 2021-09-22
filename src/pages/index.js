@@ -1,88 +1,91 @@
-import * as React from 'react'
-import { graphql, Link } from 'gatsby'
-import { Layout } from '../layout/default'
-import {
-  postsListCss,
-  postListItemCss,
-  postTeaserCss,
-  postTeaserTitleCss,
-  postTeaserDescriptionCss,
-  postTeaserLinkCss,
-} from './index.module.css'
+import React from "react"
+import theme from "../theme"
+import { Theme, Link, Text, Section } from "@quarkly/widgets"
+import { GlobalQuarklyPageStyles } from "../global-page-styles"
+import { RawHtml } from "@quarkly/components"
+import fetch from "node-fetch"
 
-export default function Home({ data }) {
+const SSRPage = ({ serverData }) => {
+  console.log({ serverData }, "!!!!")
   return (
-    <Layout>
-      <ul className={postsListCss}>
-        {data.allMarkdownRemark.nodes.map((node) => {
-          return (
-            <li className={postListItemCss}>
-              <div className={postTeaserCss}>
-                <h2 className={postTeaserTitleCss}>
-                  <Link
-                    to={`/blog/${node.slug}/`}
-                    className={postTeaserLinkCss}
-                  >
-                    {node.frontmatter.title} ( DSG )
-                  </Link>
-                </h2>
-                <p className={postTeaserDescriptionCss}>
-                  <Link
-                    to={`/blog/${node.slug}/`}
-                    className={postTeaserLinkCss}
-                  >
-                    {node.frontmatter.description}
-                  </Link>
-                </p>
-              </div>
-            </li>
-          )
-        })}
-
-        <li className={postListItemCss}>
-          <div className={postTeaserCss}>
-            <h2 className={postTeaserTitleCss}>
-              <Link to={`/dogs/`} className={postTeaserLinkCss}>
-                Dogs (SSR)
-              </Link>
-            </h2>
-          </div>
-        </li>
-
-        <li className={postListItemCss}>
-          <div className={postTeaserCss}>
-            <h2 className={postTeaserTitleCss}>
-              <a href={`/api/hello-world`} className={postTeaserLinkCss}>
-                API route
-              </a>
-            </h2>
-          </div>
-        </li>
-        <li className={postListItemCss}>
-          <div className={postTeaserCss}>
-            <h2 className={postTeaserTitleCss}>
-              <a href={`/___graphql`} className={postTeaserLinkCss}>
-                GraphiQL
-              </a>
-            </h2>
-            <p>Not enabled by default: see `examples` for how to enable it.</p>
-          </div>
-        </li>
-      </ul>
-    </Layout>
+    <Theme theme={theme}>
+      <GlobalQuarklyPageStyles pageUrl={"index"} />
+	  222
+      <Section
+        text-align="center"
+        background-color="--primary"
+        color="--light"
+        padding="100px 0"
+        sm-padding="40px 0"
+      >
+        <Text
+          as="h1"
+          font="--headline1"
+          md-font="--headline2"
+          margin="10px 0 0 0"
+        >
+          Quarkly + Gatsby SSR = &lt;3
+        </Text>
+        <img alt="Happy dog" src={serverData.message} />
+      </Section>
+      <Link
+        font={"--capture"}
+        font-size={"10px"}
+        position={"fixed"}
+        bottom={"12px"}
+        right={"12px"}
+        z-index={"4"}
+        border-radius={"4px"}
+        padding={"5px 12px 4px"}
+        background-color={"--dark"}
+        opacity={"0.6"}
+        hover-opacity={"1"}
+        color={"--light"}
+        cursor={"pointer"}
+        transition={"--opacityOut"}
+        quarkly-title={"Badge"}
+        text-decoration-line={"initial"}
+        href={"https://quarkly.io/"}
+        target={"_blank"}
+      >
+        Made on Quarkly
+      </Link>
+      <RawHtml>
+        <style place={"endOfHead"} rawKey={"614b0f32790876002294c5cb"}>
+          {
+            ":root {\n  box-sizing: border-box;\n}\n\n* {\n  box-sizing: inherit;\n}"
+          }
+        </style>
+      </RawHtml>
+    </Theme>
   )
 }
 
-export const query = graphql`
-  {
-    allMarkdownRemark {
-      nodes {
-        frontmatter {
-          title
-          description
-        }
-        slug
-      }
+export default SSRPage
+
+export async function getServerData({ params }) {
+  try {
+    const imageReq = await fetch(
+      `https://dog.ceo/api/breed/akita/images/random`
+    )
+
+    if (!imageReq.ok) {
+      throw new Error(`Response failed`)
+    }
+	// console.log(await imageReq.json())
+    return {
+      props: await imageReq.json(),
+      headers: {
+        "x-dog": "good",
+      },
+    }
+  } catch (error) {
+    console.error(error, "???")
+    return {
+      headers: {
+        status: 500,
+      },
+      props: {},
     }
   }
-`
+}

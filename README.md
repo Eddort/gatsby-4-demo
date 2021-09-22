@@ -1,9 +1,79 @@
-# Welcome to Gatsby 4 beta on Netlify
+<p align="center">
+  <img src="http://uploads.quarkly.io/readme/gatsby/readme-quarkly-and-gatsby.png" width="480px" alt="Gatsby project from Quarkly">
+</p>
 
-This site is a demo of Gatsby 4 on Netlify, including DSG and SSR render modes. [See it live](https://gatsby-4-on.netlify.app/). For more info on how to use Gatsby 4 on Netlify, see [the plugin docs](https://github.com/netlify/netlify-plugin-gatsby) or jump right in and press the deploy button below to try it yourself.
+<h1 align="center">quarkly + gatsby + ssr</h1>
 
-[<img alt="deploy to Netlify" src="https://www.netlify.com/img/deploy/button.svg">](https://app.netlify.com/start/deploy?repository=https://github.com/netlify/gatsby-4-demo#AWS_LAMBDA_JS_RUNTIME=nodejs14.x&NODE_VERSION=14&GATSBY_PRECOMPILE_DEVELOP_FUNCTIONS=true)
+<h4 align="center">This Gatsby project was created in <a href="https://quarkly.io/" target="_blank">Quarkly.io</a> – design tool for creating websites and web apps</h4>
 
----
 
-MIT Licence. Includes code from Gatsby examples.
+<p align="center">
+  <a href="https://reactjs.org/">
+    <img src="https://badgen.net/badge/React/16.13.0/cyan" alt="React version" />
+  </a>
+  <a href="https://www.gatsbyjs.org/">
+    <img src="https://badgen.net/badge/Gatsby/2.23.12/purple" alt="Gatsby version" />
+  </a>
+  
+  <a href="./LICENSE">
+    <img src="https://badgen.net/badge/license/MIT/blue" alt="License">
+  </a>
+</p>
+
+
+# ✨ Install
+
+## How to run
+
+<img src="http://uploads.quarkly.io/readme/gatsby/how-to-run-gatsby-project.gif" width="460px" alt="How to run development">
+
+```bash
+# Install dependencies
+$ npm i
+
+# Run the app
+$ npm run develop
+```
+
+## How to build
+
+<img src="http://uploads.quarkly.io/readme/gatsby/how-to-build-gatsby-project.gif" width="460px" alt="How to build">
+
+```bash
+# Install dependencies
+$ npm i
+
+# Run the build
+$ npm run build
+```
+
+# 📦 What's inside?
+
+- [React](https://reactjs.org/)
+- [Gatsby](https://www.gatsbyjs.org/)
+- [Styled-components](https://styled-components.com/)
+- [React helmet](https://github.com/nfl/react-helmet)
+- [Atomize by Quarkly](https://atomize.quarkly.io/)
+
+# ⚙️ Technology
+
+- Atomic CSS
+- Static Site Generator
+- Server-side Rendering
+
+# 💡 About [Quarkly](https://quarkly.io)
+<p>
+A unique tool for webmasters, designers and developers.
+<br>
+Here you can create websites and web apps quickly, conveniently and beautifully.
+</p>
+
+- [Documentation](https://quarkly.io/docs)
+- [Features](https://quarkly.io/features)
+- [Updates](https://quarkly.io/updates)
+- [GitHub](https://github.com/quarkly)
+- [Twitter](https://twitter.com/quarklyapp)
+- [Community](https://community.quarkly.io/)
+
+# 📝 License
+Licensed under the [MIT License](./LICENSE).

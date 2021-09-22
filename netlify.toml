@@ -2,24 +2,5 @@
 command = "yarn build"
 publish = "public"
 
-[functions.graphql]
-included_files = [
-    ".cache/data/**",
-    ".cache/query-engine/**",
-    "node_modules/gatsby-graphiql-explorer/index.html",
-    "node_modules/gatsby-graphiql-explorer/app.js",
-]
-external_node_modules = ["msgpackr-extract"]
-
-[[redirects]]
-from = "/___graphql*"
-to = "/.netlify/functions/graphql"
-status = 200
-
-[[redirects]]
-from = "/___graphiql*"
-to = "/.netlify/functions/graphql"
-status = 200
-
 [[plugins]]
 package = "@netlify/plugin-gatsby"

@@ -1,21 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby 9689ff demo`,
+    title: "Quarkly gatsby project",
+    description: "",
+    author: "@Александр Колесников",
+    siteUrl: "https://example.com",
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/posts`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [],
-      },
-    },
+
     `gatsby-plugin-netlify`,
   ],
 }
